@@ -5,14 +5,21 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <limits>
 
 using namespace std;
 
 struct vertex {
-    int id, xCoord, yCoord;
+    int id, xCoord, yCoord, key;
     struct vertex* parent;
 };
 
+struct edge {
+    struct vertex* from, to;
+    int weight;
+}
+
 int getDistance(struct vertex v1, struct vertex v2);
+int mstPrim(vector<vertex> vertexList, vertex root);
 
 #endif

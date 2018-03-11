@@ -23,6 +23,8 @@ int main() {
     //cout << vertexList[0].id << vertexList[0].xCoord;
     cout << getDistance(v1,v2);
 
+    mstPrim(vertexList, vertexList[0]);
+
     char x;
     cin >> x;
 
