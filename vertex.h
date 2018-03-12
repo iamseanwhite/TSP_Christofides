@@ -1,26 +1,23 @@
-#ifndef VERTEX_H_
-#define VERTEX_H_
+#pragma once
+#ifndef VERT_H
+#define VERT_H
 
-#include <iostream>
-#include <string>
 #include <vector>
-#include <math.h>
-#include <limits>
-
-using namespace std;
 
 struct vertex {
-    int id, xCoord, yCoord, key;
-    struct vertex* parent;
+	int id,
+		xCoord,
+		yCoord,
+		key;
+	struct vertex *parent;
+	std::vector<vertex*> edges;
 };
 
 struct edge {
-    struct vertex* from;
-    struct vertex* to;
-    int weight;
+	struct vertex* from;
+	struct vertex* to;
+	int weight;
 };
 
-int getDistance(struct vertex v1, struct vertex v2);
-vector<edge> mstPrim(vector<vertex> vertexList, vertex root);
-
+int getDistance(struct vertex *v1, struct vertex *v2);
 #endif
