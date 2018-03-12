@@ -6,7 +6,7 @@ int getDistance(struct vertex v1, struct vertex v2){
 
 }
 
-vector<edge> mstPrim(vector<vertex> vertexList, vertex root) {
+vector<edge> mstPrim(vector<vertex> &vertexList) {
 
     vector<vertex> Q = vertexList;
 
@@ -15,7 +15,9 @@ vector<edge> mstPrim(vector<vertex> vertexList, vertex root) {
     for (int i = 1; i < Q.size(); i++) {
     //for (vertex v : Q) {
         Q[i].key = inf;
+        vertexList[i].key= inf;
         Q[i].parent = NULL;
+        vertexList[i].parent = NULL;
         //cout << v.key << "\n";
     }
 
@@ -25,6 +27,7 @@ vector<edge> mstPrim(vector<vertex> vertexList, vertex root) {
     //vector<vertex> vertex_MST;
     vector<edge> edge_MST;
     vertex u;
+    vertex* addressOfu;
     while (Q.size() != 0) {
 
         //extract min
@@ -35,12 +38,17 @@ vector<edge> mstPrim(vector<vertex> vertexList, vertex root) {
             if (v.key < min) {
                 min = v.key;
                 u = v;
+                for (int i = 0; i < vertexList.size(); i++) {
+                //for (vertex ver : vertexList) {
+                    if (vertexList[i].id == v.id)
+                        addressOfu = &vertexList[i];
+                }
                 placeHolder = counter;
             }
             counter++;
         }
         Q.erase(Q.begin() + placeHolder);
-
+    /*
         if (u.key != 0) {   //if not the root
             edge e = {
                 u.parent,  //from
@@ -50,23 +58,34 @@ vector<edge> mstPrim(vector<vertex> vertexList, vertex root) {
 
             edge_MST.push_back(e);
         }
-
+    */
         //adjacency list of u is all vertices because complete graph
-        for (int i = 0; i < Q.size(); i++) {
+        for (int i = 0; i < vertexList.size(); i++) {
         //for (vertex v : Q) {
 
-            //if distance is better than before
-            if (getDistance(u,Q[i]) < Q[i].key) {
-                Q[i].parent = &u;
-                //vertexList[i].parent = &u;
-                Q[i].key = getDistance(u,Q[i]);
-                //vertexList[i].key = getDistance(u,Q[i]);
+            //if also in Q
+            for (int j = 0; j < Q.size(); j++) {
+
+                if (Q[j].id == vertexList[i].id) {
+
+                    //if distance is better than before
+                    if (getDistance(u,vertexList[i]) < vertexList[i].key) {
+                        vertexList[i].parent = addressOfu;
+                                 Q[j].parent = addressOfu;
+                        vertexList[i].key = getDistance(u,vertexList[i]);
+                                 Q[j].key = getDistance(u,vertexList[i]);
+
+                        break;
+                    }
+
+                }
+
             }
 
         }
 
     }
-   /*
+
     //build and place edge into MST
     for (int i = 0; i < vertexList.size(); i++) {
     //for (vertex v : vertexList) {
@@ -80,7 +99,7 @@ vector<edge> mstPrim(vector<vertex> vertexList, vertex root) {
             edge_MST.push_back(e);
         }
     }
-    */
+
     return edge_MST;
 
 }

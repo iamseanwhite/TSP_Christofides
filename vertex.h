@@ -21,6 +21,6 @@ struct edge {
 };
 
 int getDistance(struct vertex v1, struct vertex v2);
-vector<edge> mstPrim(vector<vertex> vertexList, vertex root);
+vector<edge> mstPrim(vector<vertex> &vertexList);
 
 #endif
