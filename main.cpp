@@ -11,6 +11,7 @@ int main() {
     v1.xCoord = 1;
     v1.yCoord = 1;
     v1.parent = NULL;
+    v1.key = 0;
 
     v2.id = 1;
     v2.xCoord = 2;
@@ -21,12 +22,15 @@ int main() {
     vertexList.push_back(v2);
 
     //cout << vertexList[0].id << vertexList[0].xCoord;
-    cout << getDistance(v1,v2);
+    cout << getDistance(v1,v2) << "\n";
 
-    mstPrim(vertexList, vertexList[0]);
+    vector<edge> MST = mstPrim(vertexList, vertexList[0]);
+
+    for (edge e : MST) {
+        cout << "From: " << e.from->id; //<< "\nTo: " << e.to->id << "\nWeight: " << e.weight;
+    }
 
     char x;
     cin >> x;
-
 
 }

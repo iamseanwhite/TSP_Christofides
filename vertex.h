@@ -15,11 +15,12 @@ struct vertex {
 };
 
 struct edge {
-    struct vertex* from, to;
+    struct vertex* from;
+    struct vertex* to;
     int weight;
-}
+};
 
 int getDistance(struct vertex v1, struct vertex v2);
-int mstPrim(vector<vertex> vertexList, vertex root);
+vector<edge> mstPrim(vector<vertex> vertexList, vertex root);
 
 #endif
