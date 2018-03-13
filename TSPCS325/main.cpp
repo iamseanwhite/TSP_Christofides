@@ -8,7 +8,9 @@
 using std::cout;
 using std::endl;
 
-int main() {
+int main(int argc, char* argv[]) {
+
+
 
 	std::vector<vertex> graph = buildGraphFromFile("test-input-7.txt");
 	mstPrim(graph);
@@ -25,20 +27,32 @@ int main() {
 		}
 		itr = itr->next;
 	}
+
+	//For Testing
+	for (vertex &v : graph)
+		v.visited = false;
+
 	int sum = 0;
 	for (int i = 0; i < tspTour.size(); i++) {
 		if (i < tspTour.size() - 1) {
 			std::cout << tspTour[i]->id << std::endl;
 			sum += getDistance(tspTour[i], tspTour[i + 1]);
+			tspTour[i]->visited = true;
 		}
-		else
+		else {
+			tspTour[i]->visited = true;
 			sum += getDistance(tspTour[i], tspTour[0]);
+		}
 	}
 
-
+	for (vertex v : graph) {
+		if (!v.visited) {
+			std::cout << "Fail ID: " << v.id << std::endl;
+		}
+	}
 
 	std::cout << sum << std::endl;
 
-	return 0;
+ 	return 0;
 
 }

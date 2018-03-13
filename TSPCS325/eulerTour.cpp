@@ -87,7 +87,6 @@ vertLink* createEulerTour(std::vector<vertex> &graph) {
 	}
 
 	
-	
 	//Print for debugging and fun
 	/*
 	vertLink *printItr = tourStart;
