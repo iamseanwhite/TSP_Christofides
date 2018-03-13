@@ -1,6 +1,2 @@
-﻿  main.cpp
-c:\users\panda\documents\github\tsp_christofides\tspcs325\main.cpp(29): warning C4018: '<': signed/unsigned mismatch
-c:\users\panda\documents\github\tsp_christofides\tspcs325\main.cpp(30): warning C4018: '<': signed/unsigned mismatch
-  eulerTour.cpp
-  Generating Code...
+﻿  eulerTour.cpp
   TSPCS325.vcxproj -> C:\Users\panda\Documents\GitHub\TSP_Christofides\Debug\TSPCS325.exe

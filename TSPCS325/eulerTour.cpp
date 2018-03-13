@@ -1,4 +1,5 @@
 #include "eulerTour.h"
+#include <vector>
 #include <iostream>
 
 void removeEdge(vertex *v1, vertex* v2) {
@@ -69,7 +70,8 @@ vertLink* createEulerTour(std::vector<vertex> &graph) {
 			if (itr->vert->edges.size() > 0) {
 				end = new vertLink;
 				end->next = itr->next;
-				end->next->prev = end;
+				if (end->next != nullptr)
+					end->next->prev = end;
 				itr->next = end;
 				end->prev = itr;
 				end->vert = itr->vert;
