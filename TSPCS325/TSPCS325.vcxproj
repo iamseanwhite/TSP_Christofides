@@ -115,12 +115,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="eulerTour.h" />
     <ClInclude Include="graphFileIO.h" />
     <ClInclude Include="greedyOddMatching.h" />
     <ClInclude Include="mstPrim.h" />
     <ClInclude Include="vertex.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="eulerTour.cpp" />
     <ClCompile Include="graphFileIO.cpp" />
     <ClCompile Include="greedyOddMatching.cpp" />
     <ClCompile Include="main.cpp" />

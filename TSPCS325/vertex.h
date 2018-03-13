@@ -15,6 +15,13 @@ struct vertex {
 	std::vector<vertex*> edges;
 };
 
+struct vertLink {
+	struct vertex* vert;
+	struct vertLink* next;
+	struct vertLink* prev;
+};
+
+
 struct edge {
 	struct vertex* from;
 	struct vertex* to;

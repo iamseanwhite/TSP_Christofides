@@ -1,9 +1,6 @@
+#include <limits>
 #include "vertex.h"
 
-struct vertLink {
-	struct vertex* vert;
-	struct vertLink* next;
-};
 
 void greedyOddMatching(vector<vertex> &graph) {
 	//Build the list of vertices with odd degree

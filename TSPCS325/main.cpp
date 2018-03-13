@@ -2,6 +2,7 @@
 #include "mstPrim.h"
 #include "graphFileIO.h"
 #include "greedyOddMatching.h"
+#include "eulerTour.h"
 #include <iostream>
 
 using std::cout;
@@ -9,44 +10,35 @@ using std::endl;
 
 int main() {
 
-    vector<vertex> vertexList;
-
-    vertex v1, v2;
-
-    v1.id = 0;
-    v1.xCoord = 1;
-    v1.yCoord = 1;
-    v1.parent = NULL;
-    v1.key = 0;
-
-    v2.id = 1;
-    v2.xCoord = 2;
-    v2.yCoord = 1;
-    v2.parent = NULL;
-
-    vertexList.push_back(v1);
-    vertexList.push_back(v2);
-
-    //cout << vertexList[0].id << vertexList[0].xCoord;
-    cout << getDistance(&v1,&v2) << "\n";
-
-
 	std::vector<vertex> graph = buildGraphFromFile("test-input-7.txt");
 	mstPrim(graph);
 	greedyOddMatching(graph);
-	int sum = 0;
-	for (vertex v : graph) {
-		std::cout << "Vertex: " << v.id << std::endl;
-		for (vertex* e : v.edges) {
-			std::cout << "  Edge With: " << e->id << " Dist: " << getDistance(&v, e) << std::endl;
+	vertLink *tour = createEulerTour(graph);
+	vertLink *itr = tour;
+	std::vector<vertex*> tspTour;
+	for (vertex &v : graph)
+		v.visited = false;
+	while (itr != nullptr) {
+		if (!itr->vert->visited) {
+			itr->vert->visited = true;
+			tspTour.push_back(itr->vert);
 		}
-		std::cout << std::endl;
+		itr = itr->next;
 	}
-    //vector<edge> MST = mstPrim(vertexList, vertexList[0]);
+	int sum = 0;
+	for (int i = 0; i < tspTour.size(); i++) {
+		if (i < tspTour.size() - 1) {
+			std::cout << tspTour[i]->id << std::endl;
+			sum += getDistance(tspTour[i], tspTour[i + 1]);
+		}
+		else
+			sum += getDistance(tspTour[i], tspTour[0]);
+	}
 
-    //for (edge e : MST) {
-   //     cout << "From: " << e.from->id; //<< "\nTo: " << e.to->id << "\nWeight: " << e.weight;
-    //}
+
+
+	std::cout << sum << std::endl;
+
 	return 0;
 
 }
