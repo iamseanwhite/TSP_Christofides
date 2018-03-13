@@ -1,9 +1,2 @@
-﻿  vertex.cpp
-c:\users\panda\documents\github\tsp_christofides\tspcs325\vertex.cpp(5): warning C4244: 'return': conversion from 'long double' to 'int', possible loss of data
-  mstPrim.cpp
-c:\users\panda\documents\github\tsp_christofides\tspcs325\mstprim.cpp(16): warning C4018: '<': signed/unsigned mismatch
-c:\users\panda\documents\github\tsp_christofides\tspcs325\mstprim.cpp(38): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-  graphFileIO.cpp
-  Generating Code...
-  TSPCS325.vcxproj -> C:\Users\panda\Documents\GitHub\TSP_Christofides\Debug\TSPCS325.exe
+﻿  main.cpp
+  TSPCS325.vcxproj -> C:\Users\panda\source\repos\TSPCS325\Debug\TSPCS325.exe
