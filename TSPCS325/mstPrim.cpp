@@ -18,7 +18,7 @@ void mstPrim(std::vector<vertex> &graph) {
 	graph[startIndex].visited = true;
 	for (int i = 0; i < graph.size(); i++) {
 		int dist = getDistance(&graph[startIndex], &graph[i]);
-		if (dist < graph[i].key && &graph[startIndex] != &graph[i]) {
+		if (!graph[i].visited) {
 			graph[i].key = dist;
 			graph[i].parent = &graph[startIndex];
 			vertexQueue.push(&graph[i]);

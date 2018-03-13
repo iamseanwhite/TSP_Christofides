@@ -24,3 +24,21 @@ std::vector<vertex> buildGraphFromFile(std::string filename) {
 	}
 	return graph;
 }
+
+void outputToFile(std::vector<vertex*> tspTour, int presum, std::string inputFileName) {
+
+	std::ofstream outputFile;
+	outputFile.open(inputFileName + ".tour");
+
+	outputFile << presum << "\n";
+	//std::cout << presum << "\n";
+
+	for (vertex *v : tspTour) {
+		outputFile << v->id << "\n";
+		//std::cout << v->id << "\n";
+	}
+
+	outputFile.close();
+
+
+}
