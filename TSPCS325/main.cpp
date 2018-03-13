@@ -31,13 +31,14 @@ int main() {
     cout << getDistance(&v1,&v2) << "\n";
 
 
-	std::vector<vertex> graph = buildGraphFromFile("tsp_example_1.txt");
+	std::vector<vertex> graph = buildGraphFromFile("test-input-7.txt");
 	mstPrim(graph);
 	greedyOddMatching(graph);
+	int sum = 0;
 	for (vertex v : graph) {
 		std::cout << "Vertex: " << v.id << std::endl;
 		for (vertex* e : v.edges) {
-			std::cout << "  Edge With: " << e->id << " Dist: " << e->key << std::endl;
+			std::cout << "  Edge With: " << e->id << " Dist: " << getDistance(&v, e) << std::endl;
 		}
 		std::cout << std::endl;
 	}

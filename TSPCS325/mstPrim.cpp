@@ -10,10 +10,13 @@ void mstPrim(std::vector<vertex> &graph) {
 	auto cmp = [](vertex* LHS, vertex* RHS) {return LHS->key > RHS->key; };
 	std::priority_queue<vertex*, std::vector<vertex*>, decltype(cmp) > vertexQueue(cmp);
 	
+	srand(time(NULL));
+
 	int startIndex = 0;
+	startIndex = rand() % graph.size();
 	graph[startIndex].key = 0;
 	graph[startIndex].visited = true;
-	for (int i = 1; i < graph.size(); i++) {
+	for (int i = 0; i < graph.size(); i++) {
 		int dist = getDistance(&graph[startIndex], &graph[i]);
 		if (dist < graph[i].key && &graph[startIndex] != &graph[i]) {
 			graph[i].key = dist;
