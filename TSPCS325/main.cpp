@@ -1,6 +1,7 @@
 #include "vertex.h"
 #include "mstPrim.h"
 #include "graphFileIO.h"
+#include "greedyOddMatching.h"
 #include <iostream>
 
 using std::cout;
@@ -32,6 +33,7 @@ int main() {
 
 	std::vector<vertex> graph = buildGraphFromFile("tsp_example_1.txt");
 	mstPrim(graph);
+	greedyOddMatching(graph);
 	for (vertex v : graph) {
 		std::cout << "Vertex: " << v.id << std::endl;
 		for (vertex* e : v.edges) {
@@ -45,4 +47,5 @@ int main() {
    //     cout << "From: " << e.from->id; //<< "\nTo: " << e.to->id << "\nWeight: " << e.weight;
     //}
 	return 0;
+
 }

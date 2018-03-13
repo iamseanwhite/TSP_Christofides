@@ -116,11 +116,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="graphFileIO.h" />
+    <ClInclude Include="greedyOddMatching.h" />
     <ClInclude Include="mstPrim.h" />
     <ClInclude Include="vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graphFileIO.cpp" />
+    <ClCompile Include="greedyOddMatching.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mstPrim.cpp" />
     <ClCompile Include="vertex.cpp" />
