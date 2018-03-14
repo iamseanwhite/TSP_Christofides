@@ -21,6 +21,10 @@ std::vector<vertex> buildGraphFromFile(std::string filename) {
 			newVert.visited = false;
 			graph.push_back(newVert);
 		}
+		inFile.close();
+	}
+	else {
+		exit(1);
 	}
 	return graph;
 }
@@ -41,4 +45,18 @@ void outputToFile(std::vector<vertex*> tspTour, int presum, std::string inputFil
 	outputFile.close();
 
 
+}
+
+int checkPreviousTour(std::string tourFileName) {
+	std::ifstream inFile;
+	std::string curLine;
+	inFile.open(tourFileName + ".tour");
+	int prevSum;
+	if (inFile) {
+		inFile >> prevSum;
+	}
+	else {
+		exit(1);
+	}
+	return prevSum;
 }

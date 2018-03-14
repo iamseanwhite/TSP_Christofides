@@ -5,11 +5,11 @@ CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
 CXXFLAGS += -O3 
 
-OBJS = main.o graphFileIO.o greedyOddMatching.o mstPrim.o vertex.o eulerTour.o
+OBJS = main.o graphFileIO.o greedyOddMatching.o mstPrim.o vertex.o eulerTour.o twoOpt.o
 
-SRCS = main.cpp graphFileIO.cpp greedyOddMatching.cpp mstPrim.cpp vertex.cpp eulerTour.cpp
+SRCS = main.cpp graphFileIO.cpp greedyOddMatching.cpp mstPrim.cpp vertex.cpp eulerTour.cpp twoOpt.cpp
 
-HEADERS = graphFileIO.h greedyOddMatching.h mstPrim.h vertex.h eulerTour.h
+HEADERS = graphFileIO.h greedyOddMatching.h mstPrim.h vertex.h eulerTour.h twoOpt.h
 
 main: ${OBJS} ${HEADERS}
 	${CXX} ${CXXFLAGS} ${OBJS} -o main

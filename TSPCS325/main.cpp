@@ -3,6 +3,7 @@
 #include "graphFileIO.h"
 #include "greedyOddMatching.h"
 #include "eulerTour.h"
+#include "twoOpt.h"
 #include <iostream>
 
 //#include "vertex.cpp"
@@ -17,7 +18,11 @@ using std::endl;
 int main(int argc, char* argv[]) {
 
 	std::string inputFileName = argv[1];
-	
+	//std::string inputFileName = "tsp_example_2.txt";
+
+	//To be altered for competition
+	bool prevRun = false;
+
 	std::vector<vertex> graph = buildGraphFromFile(inputFileName);
 	mstPrim(graph);
 	greedyOddMatching(graph);
@@ -37,38 +42,28 @@ int main(int argc, char* argv[]) {
 		}
 		itr = itr->next;
 	}
+
+
 	presum += getDistance(tspTour[tspTour.size()-1], tspTour[0]);
 	
+
+	//std::cout << "Before Opt: " << presum <<std::endl;
+
+	//Perform 2OPT
+	twoOpt(tspTour);
+	//Sum after optimizaition
+	presum = 0;
+	for (int i = 0; i < tspTour.size(); i++) {
+		if (i < tspTour.size() - 1) {
+			presum += getDistance(tspTour[i], tspTour[i + 1]);
+		}
+	}
+	presum += getDistance(tspTour[tspTour.size() - 1], tspTour[0]);
+
+
 	outputToFile(tspTour, presum, inputFileName);
 
-/*
-	//for testing
-	
-	for (vertex &v : graph)
-		v.visited = false;
-
-	int sum = 0;
-	for (int i = 0; i < tspTour.size(); i++) {
-		std::cout << tspTour[i]->id << std::endl;
-		if (i < tspTour.size() - 1) {
-			sum += getDistance(tspTour[i], tspTour[i + 1]);
-			tspTour[i]->visited = true;
-		}
-		else {
-			tspTour[i]->visited = true;
-			sum += getDistance(tspTour[i], tspTour[0]);
-		}
-	}
-
-	for (vertex v : graph) {
-		if (!v.visited) {
-			std::cout << "Fail ID: " << v.id << std::endl;
-		}
-	}
-
-	std::cout << sum << std::endl;
-*/
-
+	//std::cout << "After Opt: " << presum << std::endl;
  	return 0;
 
 }

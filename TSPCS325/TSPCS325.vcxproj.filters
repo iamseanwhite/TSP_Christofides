@@ -30,6 +30,9 @@
     <ClInclude Include="eulerTour.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="twoOpt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graphFileIO.cpp">
@@ -48,6 +51,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="eulerTour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="twoOpt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
