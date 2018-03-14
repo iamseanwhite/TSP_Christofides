@@ -4,7 +4,7 @@
 
 #include "vertex.h"
 
-void mstPrim(std::vector<vertex> &graph);
+void mstPrim(std::vector<vertex> &graph, int startIndex);
 
 //vector<edge> mstPrim(vector<vertex> vertexList, vertex root);
 

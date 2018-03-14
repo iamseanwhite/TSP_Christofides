@@ -5,15 +5,15 @@
 #include <cstdlib>
 #include <ctime>
 
-void mstPrim(std::vector<vertex> &graph) {
+void mstPrim(std::vector<vertex> &graph, int startVert) {
 	//Create priority queue for the vertices based on http://en.cppreference.com/w/cpp/container/priority_queue
 	auto cmp = [](vertex* LHS, vertex* RHS) {return LHS->key > RHS->key; };
 	std::priority_queue<vertex*, std::vector<vertex*>, decltype(cmp) > vertexQueue(cmp);
 	
 	srand(time(NULL));
 
-	int startIndex = 0;
-	startIndex = rand() % graph.size();
+	int startIndex = startVert;
+	//int startIndex = rand() % graph.size();
 	graph[startIndex].key = 0;
 	graph[startIndex].visited = true;
 	for (int i = 0; i < graph.size(); i++) {
@@ -49,103 +49,3 @@ void mstPrim(std::vector<vertex> &graph) {
 		}
 	}
 }
-/*
-vector<edge> mstPrim(vector<vertex> &vertexList) {
-
-	vector<vertex> Q = vertexList;
-
-	//set keys to infinity and parents to null
-	int inf = std::numeric_limits<int>::max();
-	for (int i = 1; i < Q.size(); i++) {
-		//for (vertex v : Q) {
-		Q[i].key = inf;
-		vertexList[i].key = inf;
-		Q[i].parent = nullptr;
-		vertexList[i].parent = nullptr;
-		//cout << v.key << "\n";
-	}
-
-	//root.key = 0;
-
-
-	//vector<vertex> vertex_MST;
-	vector<edge> edge_MST;
-	vertex u;
-	vertex* addressOfu;
-	while (Q.size() != 0) {
-
-		//extract min
-		int min = inf;
-		int counter = 0;
-		int placeHolder;
-		for (vertex v : Q) {
-			if (v.key < min) {
-				min = v.key;
-				u = v;
-				for (int i = 0; i < vertexList.size(); i++) {
-					//for (vertex ver : vertexList) {
-					if (vertexList[i].id == v.id)
-						addressOfu = &vertexList[i];
-				}
-				placeHolder = counter;
-			}
-			counter++;
-		}
-		Q.erase(Q.begin() + placeHolder);
-		/*
-		if (u.key != 0) {   //if not the root
-		edge e = {
-		u.parent,  //from
-		&u,         //to
-		u.key,      //weight
-		};
-
-		edge_MST.push_back(e);
-		}
-		*/
-/*
-		//adjacency list of u is all vertices because complete graph
-		for (int i = 0; i < vertexList.size(); i++) {
-			//for (vertex v : Q) {
-
-			//if also in Q
-			for (int j = 0; j < Q.size(); j++) {
-
-				if (Q[j].id == vertexList[i].id) {
-
-					//if distance is better than before
-					if (getDistance(u, vertexList[i]) < vertexList[i].key) {
-						vertexList[i].parent = addressOfu;
-						Q[j].parent = addressOfu;
-						vertexList[i].key = getDistance(u, vertexList[i]);
-						Q[j].key = getDistance(u, vertexList[i]);
-
-						break;
-					}
-
-				}
-
-			}
-
-		}
-
-	}
-
-	//build and place edge into MST
-	for (int i = 0; i < vertexList.size(); i++) {
-		//for (vertex v : vertexList) {
-		if (vertexList[i].key != 0) {   //if not the root
-			edge e = {
-				vertexList[i].parent,  //from
-				&vertexList[i],         //to
-				vertexList[i].key,      //weight
-			};
-
-			edge_MST.push_back(e);
-		}
-	}
-
-	return edge_MST;
-
-}
-*/

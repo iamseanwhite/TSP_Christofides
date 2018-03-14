@@ -58,5 +58,6 @@ int checkPreviousTour(std::string tourFileName) {
 	else {
 		exit(1);
 	}
+	inFile.close();
 	return prevSum;
 }

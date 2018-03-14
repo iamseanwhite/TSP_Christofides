@@ -1,4 +1,5 @@
 ﻿  main.cpp
-c:\users\panda\documents\github\tsp_christofides\tspcs325\main.cpp(53): warning C4018: '<': signed/unsigned mismatch
-c:\users\panda\documents\github\tsp_christofides\tspcs325\main.cpp(54): warning C4018: '<': signed/unsigned mismatch
+c:\users\panda\documents\github\tsp_christofides\tspcs325\main.cpp(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\panda\documents\github\tsp_christofides\tspcs325\main.cpp(70): warning C4018: '<': signed/unsigned mismatch
+c:\users\panda\documents\github\tsp_christofides\tspcs325\main.cpp(71): warning C4018: '<': signed/unsigned mismatch
   TSPCS325.vcxproj -> C:\Users\panda\Documents\GitHub\TSP_Christofides\Debug\TSPCS325.exe
