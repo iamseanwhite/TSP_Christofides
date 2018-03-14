@@ -91,7 +91,7 @@ int main(int argc, char* argv[]) {
 		//Time to kill program if it is going too long
 		clock_t finish = clock();
 		time = ((finish - start) / (double)CLOCKS_PER_SEC);
-		if (time > 165) {
+		if (time > 170) {
 			break;
 		}
 
