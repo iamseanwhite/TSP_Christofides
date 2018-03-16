@@ -1,7 +1,5 @@
 CXX = g++
 CXXFLAGS = -std=c++0x
-CXXFLAGS += -Wall
-CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
 CXXFLAGS += -O3 
 
